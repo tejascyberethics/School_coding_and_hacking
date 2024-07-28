@@ -1,5 +1,7 @@
 """take 3 user input and enter their sum & product"""
 
+from time import sleep
+import os
 
 # a = input("enter your 1st digit\n:-> ")
 # sleep(1)
@@ -7,12 +9,6 @@
 # sleep(1)
 # c = input("\n\nenter your 3rd digit\n:-> ")
 
-
-# import elements
-
-from time import sleep
-import os
-from customtkinter import *
 
 # installation for important modules
 
@@ -22,11 +18,11 @@ os.system('pip install customtkinter --upgrade')
 sleep(2)
 os.system('clear')
 sleep(1)
-os.system('pip install pillow')
-os.system('pip install pillow --upgrade')
-sleep(2)
-os.system('clear')
-sleep(1)
+
+
+# import elements
+
+from customtkinter import *
 
 
 # ui setup for code
