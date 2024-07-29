@@ -12,11 +12,12 @@ import os
 
 # installation for important modules
 
-os.system('clear')
+os.system('cls')
+sleep(2)
 os.system('pip install customtkinter')
 os.system('pip install customtkinter --upgrade')
 sleep(2)
-os.system('clear')
+os.system('cls')
 sleep(1)
 
 
@@ -29,12 +30,12 @@ from customtkinter import *
 
 app = CTk()
 app.geometry('400x400')
-set_appearance_mode('dark')
+set_appearance_mode('system')
 
 # command functions for the widget's
 
 def calculate_clicked():
-    os.system('clear')
+    os.system('cls')
     print(f"entered input of: \n1){input_1.get()} \n2){input_2.get()} \n3){input_3.get()}")
     x = input_1.get()
     y = input_2.get()
@@ -50,7 +51,7 @@ def calculate_clicked():
         label_ans_sum.configure(text = f"ANS_ADD = {calculated_sum}")
         label_ans_product.configure(text = f"ANS_MUL = {calculated_product}")
     else:
-        os.system('clear')
+        os.system('cls')
         print("try again, put numbers only")
 
 # main widgets 
