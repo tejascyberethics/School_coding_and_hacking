@@ -1,0 +1,15 @@
+2024-08-12 06:46:28,735 - Starting brute force attack on 192.168.3.173 for user 192.168.3.163
+2024-08-12 06:46:28,735 - Starting brute force on 192.168.3.173 for username 192.168.3.163
+2024-08-12 06:46:28,735 - Trying SSH login with 192.168.3.163:a on 192.168.3.173
+2024-08-12 06:46:33,745 - Socket error: timed out
+2024-08-12 06:46:33,746 - Trying SSH login with 192.168.3.163:b on 192.168.3.173
+2024-08-12 06:46:38,748 - Socket error: timed out
+2024-08-12 06:46:38,748 - Trying SSH login with 192.168.3.163:c on 192.168.3.173
+2024-08-12 06:46:43,750 - Socket error: timed out
+2024-08-12 06:46:43,750 - Trying SSH login with 192.168.3.163:d on 192.168.3.173
+2024-08-12 06:46:48,752 - Socket error: timed out
+2024-08-12 06:46:48,753 - Trying SSH login with 192.168.3.163:e on 192.168.3.173
+2024-08-12 06:46:53,755 - Socket error: timed out
+2024-08-12 06:46:53,755 - Trying SSH login with 192.168.3.163:f on 192.168.3.173
+2024-08-12 06:46:58,757 - Socket error: timed out
+2024-08-12 06:46:58,758 - Trying SSH login with 192.168.3.163:g on 192.168.3.173

