@@ -17,7 +17,7 @@ try:
     while True:
             enter_command = input("\n\nEnter a command:-> ")
             os.system(enter_command)
-            if enter_command == 'clear':
+            if enter_command == a:
                 ascii_banner = pyfiglet.figlet_format("Welcome To Forced Terminal")
                 print(ascii_banner)
 
