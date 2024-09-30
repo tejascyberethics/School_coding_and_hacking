@@ -1,2 +1,2 @@
 set _COMPAT_LAYER=RunAsInvoker
-Start Git-2.46.2-64-bit
+Start VSCodeUserSetup-x64-1.93.1
