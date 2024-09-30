@@ -13,6 +13,19 @@ os.system('clear')
 
 
 # import elements
-import rotatescreen, time as rs
 
+
+import rotatescreen as rs
+import time as t
+
+# main code
+
+
+pd = rs.get_primary_display()
+
+for i in range(5):
+    angle_list = [90,180,270,0]
+    for x in angle_list:
+        pd.set_landscape_flipped(angle_list)
+        t.sleep(0.5)
 
