@@ -1,29 +1,99 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Poppins, sans-serif;
+}
+
 body{
-    background-image: url("https://media.istockphoto.com/id/1443589459/vector/elegant-white-abstract-background-with-diagonal-lines.jpg?s=170667a&w=0&k=20&c=EGMIsakTIUVzPvi-HcHbv042DG6ff2GawF48zgeNnww=");
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    min-height: 100vh;
+    gap: 30px;
+    background-image: url("https://images.unsplash.com/photo-1498673394965-85cb14905c89?q=80&w=4170&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D");
+    background-size: cover;
+    overflow: hidden;
+}
+
+.div{
+    background: linear-gradient(135deg, rgba(255,255,255,0.1), rgba(255,255,255,0));
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255,255,255,0.18);
+    box-shadow:0 8px 32px 0 rgba(0,0,0,0.37);
+    justify-content: center;
+    align-items: center;
+    border-radius: 50px;
+    text-align: center;
+    width: 70%;
+
 }
 
 p{
-    align-content: center;
-    float: left;
-    text-align: center;
-    position: absolute;
+    margin: 50px;
+    font-size: large;
+    font-weight: 1000;
+    color: #cbcbc9;
 }
 
-p:after{
-    content:'';
-    background-color: #30799B;
+h1{
+    margin: 50px;
+    color: white;
+    font-size: 10vh;
+    justify-content: center;
+}
+
+.buttons{
+    margin: 50px;
+    flex-direction: row;
+    height: auto;
+    width: auto;
+}
+
+.btn{
     position: relative;
-    width: 10px;
-    height: 10px;
-    left: 0;
-    bottom: 0;
-    transition: 1s ;
-}
-
-p:before{
-    content:'';
-    left: 10vh;
-    bottom:0;
+    display: inline-block;
+    padding: 10px 50px;
+    font-size: 1em;
+    background: transparent;
+    border: 2px solid var(--clr);
+    font-weight: 700;
+    border-radius: 40px;
+    cursor: pointer;
+    color: var(--clr);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
     transition: 1s;
-
+    overflow: hidden;
 }
+
+.btn:hover{
+    background: var(--clr);
+    box-shadow: 0 0 25px var(--clr), 0 0 100px var(--clr), 0 0 150px var(--clr);
+}
+
+.btn span{
+    position: relative;
+    display: inline-block;
+    transition: transform 0.5s;
+    text-shadow: 0 35px black;
+    transform: translateY(0px);
+}
+
+.btn:hover span.hover{
+    transform: translateY(-35px);
+}
+
+.btn span.hover{
+    transform: translateY(-35px);
+}
+
+
+
+
+
+
+
+
