@@ -4,7 +4,6 @@
     color-scheme: dark light;
 }
 
-
 body{
     margin: 0;
     background-color: #000;
@@ -14,25 +13,43 @@ body{
 }
 a{
     text-decoration: none;
+    color: white;
 }
 header{
     width: 1140px;
     max-width: 80%;
     margin: auto;
-    height: 50px;
+    height: 30px;
     display: flex;
     align-items: center;
     position: relative;
     z-index: 100;
+    color: white;
+}
+
+header{
+    background: linear-gradient(135deg, rgba(255,255,255,0.1), rgba(255,255,255,0));
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255,255,255,0.18);
+    box-shadow:0 8px 32px 0 rgba(0,0,0,0.37);
+    width: auto;
+    height: auto;
+    border-radius: 10px;
+    padding: 5px;
+    align-items: center;
+    justify-content: center;
+
 }
 header a{
-    color: #eee;
+    color: white;
     margin-right: 40px;
+    font-weight: 800;
 }
 /* carousel */
 .carousel{
     height: 100vh;
-    margin-top: -50px;
+    margin-top: -30px;
     width: 100vw;
     overflow: hidden;
     position: relative;
@@ -137,13 +154,17 @@ header a{
     width: 40px;
     height: 40px;
     border-radius: 50%;
-    background-color: #eee4;
-    border: none;
     color: #fff;
     font-family: monospace;
     font-weight: bold;
     transition: .5s;
+    background: linear-gradient(135deg, rgba(255,255,255,0.1), rgba(255,255,255,0));
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255,255,255,0.18);
+    box-shadow:0 8px 32px 0 rgba(0,0,0,0.37);
 }
+
 .arrows button:hover{
     background-color: #fff;
     color: #000;
@@ -311,6 +332,13 @@ header a{
     .carousel .list .item .content .title{
         font-size: 30px;
     }
+    .carousel .thumbnail .item{
+        width: 60px;
+        height: 80px;
+    }
+    .carousel .thumbnail .item .content{
+        opacity: 0;
+    }
 }
 
 .back{
@@ -325,4 +353,27 @@ header a{
     padding: 5px;
 }
 
+a{
+    position: relative;
+    width: max-content;
+}
+a::after{
+    content: '';
+    background: linear-gradient(palegreen, white, orange);
+    border-radius: 100px;
+    height: 3px;
+    width: 100%;
+    position: absolute;
+    bottom: -1px;
+    left: 0;
+    transform: scaleX(0);
+    transition: 400ms;
+    color: #2b2d30;
+}
+a:hover::after{
+    transform:scaleX(1);
+}
 
+#clock {
+    text-align: center;
+}

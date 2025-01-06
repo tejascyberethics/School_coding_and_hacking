@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Indian Cultural Initiative</title>
+    <style>
+        :root {
+            --accent: darkorange;
+            --text: palegreen;
+            --gray: palegreen;
+
+            color-scheme: dark light;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Urbanist', sans-serif;
+            background-image: url("https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEirL3KAhHdH4YjuJbiZO6NBNW39pYfYhrMgAp396UM0RDy2G8CKpb-4MtcV91QtHe843VChjEaSV6ik8_ipwhEp-BkWxVRQaoivgxvHaTMrkas1KJpeTFdyD_KAsKCkVIunRLn-niPiA6BAZEgWgCiKJdWIyDta1-RSorDL0Ojk3OAqPB5ki8OdtSbCrA/s1600-rw/indian-wallpaper-pc-4k.png");
+            background-size: cover;
+            color: var(--text);
+            line-height: 1.6;
+
+        }
+
+        header {
+            position: fixed;
+            width: 100%;
+            z-index: 1000;
+            background: rgba(0, 0, 0, 0.3);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        nav {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1.5rem;
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+        }
+
+        nav a {
+            color: var(--text);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            position: relative;
+            padding: 0.5rem 1rem;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: 0;
+            left: 0;
+            background-color: var(--accent);
+            transition: width 0.3s ease;
+        }
+
+        nav a:hover::after {
+            width: 100%;
+        }
+
+        section {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 6rem 1rem;
+        }
+
+        .content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 3rem;
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 20px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            background-size: cover;
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)) fixed center;
+        }
+
+        .animated-text {
+            font-family: 'Playfair Display', serif;
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 2rem;
+            display: flex;
+            gap: 0.5rem;
+            color: var(--text);
+        }
+
+        .typing-container {
+            position: relative;
+            display: inline-block;
+        }
+
+        .typing-text {
+            position: relative;
+            color: var(--accent);
+        }
+
+        .typing-text::after {
+            content: "|";
+            position: absolute;
+            right: -8px;
+            color: var(--accent);
+            animation: blink 0.7s infinite;
+        }
+
+        .title {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--accent);
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+
+        .des p {
+            margin-bottom: 1.5rem;
+            font-size: 1.1rem;
+            opacity: 0.9;
+            font-weight: 300;
+        }
+
+        .buttons {
+            display: flex;
+            gap: 1.5rem;
+            justify-content: center;
+            margin-top: 3rem;
+        }
+
+        button {
+            padding: 1rem 2.5rem;
+            font-size: 1.1rem;
+            font-weight: 600;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-family: 'Urbanist', sans-serif;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        button:first-child {
+            background: var(--accent);
+            color: var();
+        }
+
+        button:last-child {
+            background: transparent;
+            border: 2px solid var(--accent);
+            color: var(--accent);
+        }
+
+        button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(255, 107, 107, 0.2);
+        }
+
+        .creations-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .creation-card {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 15px;
+            padding: 2rem;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            background-size: cover;
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)) fixed center;
+        }
+
+        .creation-card:hover {
+            transform: translateY(-5px);
+            background: rgba(255, 255, 255, 0.08);
+        }
+
+        .creation-card h3 {
+            color: var(--accent);
+            margin-bottom: 1rem;
+            font-family: 'Playfair Display', serif;
+        }
+
+        .creation-card a {
+            color: var(--text);
+            text-decoration: none;
+            display: inline-block;
+            margin-top: 1rem;
+            font-weight: 600;
+            transition: color 0.3s ease;
+        }
+
+        .creation-card a:hover {
+            color: var(--accent);
+        }
+
+        .india-section {
+            background-size: cover;
+
+        }
+
+        .india-content {
+            text-align: center;
+        }
+
+        .india-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .india-card {
+            padding: 2rem;
+            background: rgba(0, 0, 0, 0.5);
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+        }
+
+        .india-card h3 {
+            color: var(--accent);
+            margin-bottom: 1rem;
+            font-family: 'Playfair Display', serif;
+        }
+
+        @media (max-width: 768px) {
+            .animated-text {
+                font-size: 2.5rem;
+            }
+
+            .content {
+                padding: 2rem;
+                margin: 1rem;
+            }
+
+            .buttons {
+                flex-direction: column;
+            }
+
+            nav {
+                padding: 1rem;
+                gap: 1rem;
+            }
+
+            nav a {
+                font-size: 0.9rem;
+            }
+        }
+
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0; }
+        }
+    </style>
+</head>
+<body>
+<header>
+    <nav>
+        <a href="#home">Home</a>
+        <a href="#creations">Creations</a>
+        <a href="#india">India</a>
+        <a href="#contacts">Contact</a>
+    </nav>
+</header>
+
+<section id="home">
+    <div class="content">
+        <div class="animated-text">
+            We <div class="typing-container">
+            <span class="typing-text"></span>
+        </div>
+        </div>
+        <div class="des">
+            <div class="title">Welcome to Our Initiative</div>
+            <p>From the heart of India, we bring forth a vision of transformation and hope. Our mission extends beyond borders, embracing the rich cultural heritage of our nation while working towards a better tomorrow.</p>
+            <p>Through education, charity, and cultural preservation, we strive to make a lasting impact on communities across India.</p>
+        </div>
+        <div class="buttons">
+            <button onclick="window.location.href='#creations'">Our Work</button>
+            <button onclick="window.location.href='#contacts'">Join Us</button>
+        </div>
+    </div>
+</section>
+
+<section id="creations">
+    <div class="content">
+        <div class="title">Our Creations</div>
+        <div class="creations-grid">
+            <div class="creation-card">
+                <h3>Swatch bharat abhian</h3>
+                <p>info of our mission of swatch bharat abhian</p>
+                <a href="Core(Swatch_Bharat)/html.html">View Project →</a>
+            </div>
+            <div class="creation-card">
+                <h3>khello india</h3>
+                <p>info of our most popular event, khello india</p>
+                <a href="Core(Kheelo_India)/html.html">Explore →</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="india" class="india-section">
+    <div class="content india-content">
+        <div class="title">Celebrating India</div>
+        <div class="india-grid">
+            <div class="india-card">
+                <h3>Heritage</h3>
+                <p>Preserving ancient traditions and cultural wisdom</p>
+            </div>
+            <div class="india-card">
+                <h3>Innovation</h3>
+                <p>Blending tradition with modern technology</p>
+            </div>
+            <div class="india-card">
+                <h3>Community</h3>
+                <p>Building stronger bonds across diverse cultures</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="contacts">
+    <div class="content">
+        <div class="title">Connect With Us</div>
+        <div class="contact-form">
+            <div class="form-group">
+                <input type="text" placeholder="Your Name" style="width: 100%; padding: 1rem; margin: 0.5rem 0; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); color: white; border-radius: 8px;">
+            </div>
+            <div class="form-group">
+                <input type="email" placeholder="Your Email" style="width: 100%; padding: 1rem; margin: 0.5rem 0; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); color: white; border-radius: 8px;">
+            </div>
+            <div class="form-group">
+                <textarea rows="5" placeholder="Your Message" style="width: 100%; padding: 1rem; margin: 0.5rem 0; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); color: white; border-radius: 8px;"></textarea>
+            </div>
+            <button style="width: 100%; margin-top: 1rem;">Send Message</button>
+        </div>
+    </div>
+</section>
+
+<script>
+    const words = ["Empower India", "Preserve Culture", "Build Future", "Share Knowledge", "Unite Communities"];
+    const typingText = document.querySelector('.typing-text');
+    let wordIndex = 0;
+    let charIndex = 0;
+    let isDeleting = false;
+    let isWaiting = false;
+
+    function type() {
+        const currentWord = words[wordIndex];
+
+        if (isDeleting) {
+            typingText.textContent = currentWord.substring(0, charIndex - 1);
+            charIndex--;
+        } else {
+            typingText.textContent = currentWord.substring(0, charIndex + 1);
+            charIndex++;
+        }
+
+        if (!isDeleting && charIndex === currentWord.length) {
+            isWaiting = true;
+            setTimeout(() => {
+                isDeleting = true;
+                isWaiting = false;
+            }, 2000);
+        } else if (isDeleting && charIndex === 0) {
+            isDeleting = false;
+            wordIndex = (wordIndex + 1) % words.length;
+        }
+
+        const typingSpeed = isDeleting ? 50 : isWaiting ? 500 : 50;
+        setTimeout(type, typingSpeed);
+    }
+
+    type();
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            e.preventDefault();
+            document.querySelector(this.getAttribute('href')).scrollIntoView({
+                behavior: 'smooth'
+            });
+        });
+    });
+</script>
+</body>
+</html>

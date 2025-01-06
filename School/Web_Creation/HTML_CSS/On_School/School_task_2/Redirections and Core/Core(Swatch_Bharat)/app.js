@@ -1,6 +1,8 @@
 //step 1: get DOM
 let nextDom = document.getElementById('next');
 let prevDom = document.getElementById('prev');
+let seeDom = document.getElementById('see_more');
+let joinDom = document.getElementById('join_us');
 
 let carouselDom = document.querySelector('.carousel');
 let SliderDom = carouselDom.querySelector('.carousel .list');
@@ -18,6 +20,14 @@ nextDom.onclick = function(){
 
 prevDom.onclick = function(){
     showSlider('prev');
+}
+
+joinDom.onclick = function (){
+    window.location.href = '../home.html#contacts'
+}
+
+seeDom.onclick = function (){
+    window.location.href = '../home.html#creations'
 }
 let runTimeOut;
 let runNextAuto = setTimeout(() => {
@@ -47,3 +57,13 @@ function showSlider(type){
         next.click();
     }, timeAutoNext)
 }
+
+function updateTime() {
+    let now = new Date();
+    let hours = now.getHours();
+    let minutes = now.getMinutes();
+    let seconds = now.getSeconds();
+    document.getElementById("clock").textContent = `${hours}:${minutes}:${seconds}`;
+}
+
+setInterval(updateTime, 1000); // Update every second

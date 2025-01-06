@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        :root {
+            --neon-green: #0f9;
+            --neon-blue: #0ff;
+            --neon-red: #f34;
+            --neon-purple: #f0f;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            background: #000;
+            font-family: 'Courier New', monospace;
+            color: var(--neon-green);
+            overflow: hidden;
+            cursor: none;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        /* Previous styles remain the same... */
+        .matrix-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            opacity: 0.3;
+        }
+
+        .custom-cursor {
+            width: 20px;
+            height: 20px;
+            border: 2px solid var(--neon-blue);
+            border-radius: 50%;
+            position: fixed;
+            pointer-events: none;
+            z-index: 9999;
+            mix-blend-mode: difference;
+        }
+
+        .cursor-trail {
+            width: 10px;
+            height: 10px;
+            background: var(--neon-purple);
+            border-radius: 50%;
+            position: fixed;
+            pointer-events: none;
+            z-index: 9998;
+            opacity: 0.5;
+        }
+
+        .container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+
+        .boot-sequence {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            font-size: 14px;
+            opacity: 0;
+        }
+
+        .typing-text {
+            font-size: 3em;
+            text-shadow: 0 0 10px var(--neon-green);
+            position: relative;
+            opacity: 0;
+        }
+
+        .scan-line {
+            position: absolute;
+            width: 100%;
+            height: 2px;
+            background: var(--neon-blue);
+            opacity: 0.5;
+            pointer-events: none;
+            animation: scanline 6s linear infinite;
+        }
+
+        .glitch-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: transparent;
+            pointer-events: none;
+            z-index: 1000;
+            display: none;
+        }
+
+        .warning-box {
+            position: fixed;
+            padding: 20px;
+            background: rgba(0,0,0,0.9);
+            border: 2px solid var(--neon-red);
+            color: var(--neon-red);
+            box-shadow: 0 0 20px var(--neon-red);
+            display: none;
+            z-index: 100;
+            transform: perspective(1000px) rotateX(0deg);
+            transition: transform 0.3s;
+        }
+
+        .hex-grid {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            opacity: 0.2;
+            display: none;
+        }
+
+        .loading-bar {
+            width: 300px;
+            height: 20px;
+            background: rgba(0,255,255,0.1);
+            border: 2px solid var(--neon-blue);
+            margin-top: 20px;
+            position: relative;
+            display: none;
+        }
+
+        .loading-progress {
+            width: 0%;
+            height: 100%;
+            background: var(--neon-blue);
+            transition: width 0.5s;
+        }
+
+        .final-present {
+            font-size: 4em;
+            color: #fff;
+            text-shadow: 0 0 20px #fff;
+            opacity: 0;
+            transform: scale(0);
+            transition: all 1s;
+        }
+
+        .hi-message {
+            font-size: 6em;
+            color: var(--neon-purple);
+            text-shadow: 0 0 30px var(--neon-purple);
+            opacity: 0;
+            transform: scale(0);
+            transition: all 1s;
+            position: absolute;
+            z-index: 2000;
+
+        }
+
+        a{
+            text-decoration: none;
+        }
+
+        @keyframes scanline {
+            0% { top: 0%; }
+            100% { top: 100%; }
+        }
+
+        @keyframes glitch {
+            0% { transform: translate(0); filter: hue-rotate(0deg); }
+            25% { transform: translate(-10px, 10px); filter: hue-rotate(90deg); }
+            50% { transform: translate(10px, -10px); filter: hue-rotate(180deg); }
+            75% { transform: translate(-5px, 5px); filter: hue-rotate(270deg); }
+            100% { transform: translate(0); filter: hue-rotate(360deg); }
+        }
+
+        .sports-visual {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: none;
+            filter: brightness(1.2) contrast(1.2);
+        }
+
+        .crack-overlay {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            background: url('/api/placeholder/1920/1080') center/cover;
+            pointer-events: none;
+            opacity: 0;
+            z-index: 500;
+        }
+
+        .debug-info {
+            position: fixed;
+            top: 10px;
+            right: 10px;
+            font-size: 12px;
+            color: var(--neon-green);
+            text-align: right;
+            pointer-events: none;
+        }
+    </style>
+</head>
+<body>
+<div class="custom-cursor"></div>
+<div class="matrix-bg"></div>
+<div class="scan-line"></div>
+<div class="hex-grid"></div>
+<div class="glitch-overlay"></div>
+<div class="crack-overlay"></div>
+<div class="debug-info"></div>
+
+<div class="container">
+    <div class="boot-sequence"></div>
+    <div class="typing-text"></div>
+    <div class="loading-bar">
+        <div class="loading-progress"></div>
+    </div>
+    <img class="sports-visual" src="/api/placeholder/1920/1080" alt="Sports">
+    <div class="final-present">TEJAS PRESENTS</div>
+    <div class="hi-message"><a href="./index.html">hi</a></div>
+</div>
+
+<script>
+    // Previous functions remain the same...
+    // Custom cursor with trail
+    const cursor = document.querySelector('.custom-cursor');
+    const trails = [];
+    const maxTrails = 10;
+
+    document.addEventListener('mousemove', (e) => {
+        cursor.style.left = e.clientX - 10 + 'px';
+        cursor.style.top = e.clientY - 10 + 'px';
+
+        // Create trail
+        const trail = document.createElement('div');
+        trail.className = 'cursor-trail';
+        trail.style.left = e.clientX - 5 + 'px';
+        trail.style.top = e.clientY - 5 + 'px';
+        document.body.appendChild(trail);
+        trails.push({
+            element: trail,
+            timeCreated: Date.now()
+        });
+
+        // Remove old trails
+        while (trails.length > maxTrails) {
+            const oldest = trails.shift();
+            oldest.element.remove();
+        }
+    });
+
+    // Matrix rain effect
+    function createMatrixRain() {
+        const canvas = document.createElement('canvas');
+        canvas.className = 'matrix-bg';
+        document.body.appendChild(canvas);
+        const ctx = canvas.getContext('2d');
+
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+
+        const chars = '01'.split('');
+        const fontSize = 14;
+        const columns = canvas.width / fontSize;
+        const drops = Array(Math.floor(columns)).fill(1);
+
+        function draw() {
+            ctx.fillStyle = 'rgba(0,0,0,0.05)';
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+            ctx.fillStyle = '#0f0';
+            ctx.font = fontSize + 'px monospace';
+
+            for (let i = 0; i < drops.length; i++) {
+                const char = chars[Math.floor(Math.random() * chars.length)];
+                ctx.fillText(char, i * fontSize, drops[i] * fontSize);
+                if (drops[i] * fontSize > canvas.height && Math.random() > 0.975) {
+                    drops[i] = 0;
+                }
+                drops[i]++;
+            }
+        }
+
+        setInterval(draw, 33);
+    }
+
+    // Boot sequence
+    function startBootSequence() {
+        const bootText = document.querySelector('.boot-sequence');
+        const bootMessages = [
+            'INITIALIZING SYSTEM...',
+            'LOADING CORE MODULES...',
+            'CHECKING SECURITY PROTOCOLS...',
+            'ESTABLISHING NEURAL NETWORK...',
+            'SYNCING QUANTUM DATABASE...',
+            'BYPASSING FIREWALLS...',
+            'ACTIVATING NEURAL INTERFACE...'
+        ];
+
+        bootText.style.opacity = '1';
+        let index = 0;
+
+        function showNextMessage() {
+            if (index < bootMessages.length) {
+                bootText.innerHTML += bootMessages[index] + '<br>';
+                index++;
+                setTimeout(showNextMessage, 500);
+            } else {
+                startMainSequence();
+            }
+        }
+
+        showNextMessage();
+    }
+
+    // Main typing sequence
+    function startMainSequence() {
+        const text = "ACCESSING SPORTS PROTOCOL_//";
+        const typingText = document.querySelector('.typing-text');
+        let index = 0;
+        typingText.style.opacity = '1';
+
+        function type() {
+            if (index < text.length) {
+                typingText.textContent = text.slice(0, index + 1);
+                index++;
+                setTimeout(type, 100);
+            } else {
+                startHackSequence();
+            }
+        }
+
+        type();
+    }
+
+    // Hack sequence
+    function startHackSequence() {
+        const warnings = [
+            'WARNING: UNAUTHORIZED ACCESS DETECTED',
+            'SECURITY BREACH IN PROGRESS',
+            'FIREWALL COMPROMISED',
+            'SYSTEM INFILTRATION DETECTED',
+            'NEURAL NETWORK UNDER ATTACK'
+        ];
+
+        function createWarning(text, index) {
+            const warning = document.createElement('div');
+            warning.className = 'warning-box';
+            warning.textContent = text;
+            warning.style.left = (Math.random() * (window.innerWidth - 300)) + 'px';
+            warning.style.top = (Math.random() * (window.innerHeight - 100)) + 'px';
+            document.body.appendChild(warning);
+            warning.style.display = 'block';
+            warning.style.transform = `perspective(1000px) rotateX(${Math.random() * 360}deg)`;
+
+            setTimeout(() => warning.remove(), 2000);
+        }
+
+        warnings.forEach((text, i) => {
+            setTimeout(() => createWarning(text, i), i * 300);
+        });
+
+        setTimeout(startLoadingSequence, warnings.length * 300 + 1000);
+    }
+
+    // Loading sequence
+    function startLoadingSequence() {
+        document.querySelector('.typing-text').style.display = 'none';
+        document.querySelector('.loading-bar').style.display = 'block';
+        const progress = document.querySelector('.loading-progress');
+        let width = 0;
+
+        const interval = setInterval(() => {
+            if (width >= 100) {
+                clearInterval(interval);
+                startFinalSequence();
+            } else {
+                width++;
+                progress.style.width = width + '%';
+            }
+        }, 30);
+    }
+
+    // Modified final sequence
+    function startFinalSequence() {
+        document.querySelector('.loading-bar').style.display = 'none';
+        document.querySelector('.sports-visual').style.display = 'block';
+
+        setTimeout(() => {
+            document.querySelector('.crack-overlay').style.opacity = '1';
+            document.querySelector('.glitch-overlay').style.display = 'block';
+            document.querySelector('.final-present').style.opacity = '1';
+            document.querySelector('.final-present').style.transform = 'scale(1)';
+
+            // Add delay before showing "hi"
+            setTimeout(() => {
+                document.querySelector('.final-present').style.opacity = '0';
+                setTimeout(() => {
+                    document.querySelector('.hi-message').style.opacity = '1';
+                    document.querySelector('.hi-message').style.transform = 'scale(1)';
+                }, 500);
+            }, 2000);
+        }, 1000);
+    }
+
+    // Debug info
+    setInterval(() => {
+        document.querySelector('.debug-info').textContent = `
+                FPS: ${Math.round(1000 / 16)}
+                MEMORY: ${Math.round(performance.memory?.usedJSHeapSize / 1024 / 1024 || 0)}MB
+                TIME: ${new Date().toLocaleTimeString()}
+            `;
+    }, 1000);
+
+    // Start everything
+    createMatrixRain();
+    setTimeout(startBootSequence, 1000);
+</script>
+</body>
+</html>
