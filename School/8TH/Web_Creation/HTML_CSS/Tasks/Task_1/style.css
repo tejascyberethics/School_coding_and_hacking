@@ -1,0 +1,20 @@
+@font-face {
+    font-family: 'FONT_1';
+    src: url('./media/FONT_1.otf') format('opentype');
+}
+@font-face {
+    font-family: 'FONT_2';
+    src: url('./media/FONT_2.ttf') format('truetype');
+}
+
+h1{
+    font-family: FONT_1, 'sans-serif';
+    font-size: 2rem;
+    align-content: center;
+}
+
+h2{
+    font-family: FONT_2, 'sans-serif';
+    font-size: 1rem;
+}
+
