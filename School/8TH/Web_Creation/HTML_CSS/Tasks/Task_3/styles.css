@@ -1,0 +1,10 @@
+*{
+    font-family: 'Courier New', monospace;
+}
+
+h1{color: green; align-content: center; align-items: center; text-align: center}
+p{color: black;}
+
+ol{
+    color: gray;
+}
