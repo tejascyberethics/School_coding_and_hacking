@@ -1,0 +1,27 @@
+body{
+    font-family: Arial, sans-serif;
+}
+
+h1{
+    text-align: center;
+    color: #2c3e50;
+}
+
+ul{
+    list-style-type: square;
+}
+
+ol{
+    font-weight: bold;
+}
+
+table{
+    border: 2px solid #34495e;
+    width: 100%;
+}
+th{
+    background-color: #3498db;
+}
+td{
+    border: 1px solid #bdc4c7;
+}

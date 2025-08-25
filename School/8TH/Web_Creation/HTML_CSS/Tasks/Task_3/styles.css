@@ -2,8 +2,24 @@
     font-family: 'Courier New', monospace;
 }
 
-h1{color: green; align-content: center; align-items: center; text-align: center}
-p{color: black;}
+body{
+    background-color: #f0f8f0;
+}
+
+h1{
+    color: green;
+    align-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+h2{
+    color: #4c7e1c;
+}
+
+p{
+    color: black;
+}
 
 ol{
     color: gray;
